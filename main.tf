@@ -26,7 +26,7 @@ provider "azapi" {
 
 provider "azurerm" {
   features {}
-  subscription_id = "xxxx-xxxx-xxxx-xxxxx" #Update with your Azure subscription ID
+  subscription_id = var.azure_subscription_id
 }
 
 # This ensures we have unique CAF compliant names for our resources.

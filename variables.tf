@@ -43,3 +43,9 @@ variable "account_replication_type" {
   description = "The replication type for the storage account, values can be LRS or ZRS."
   default = "LRS"
 }
+
+variable "azure_subscription_id" {
+  description = "Azure subscription ID"
+  type        = string
+  sensitive   = true
+}
