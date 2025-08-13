@@ -1,1 +1,0 @@
-# sftp-azure-terraform
