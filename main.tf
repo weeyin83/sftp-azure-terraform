@@ -69,6 +69,12 @@ resource "azurerm_storage_account" "sa" {
 
   # security defaults for demo: enforce https only
   allow_nested_items_to_be_public = false
+
+  tags = {
+    Environment = var.tag_environment
+    Project     = var.tag_project
+    Creator     = var.tag_creator
+  }
 }
 
 # Blob container (this will act as the folder / home-root)
