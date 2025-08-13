@@ -41,6 +41,7 @@ The following variables can be customized in [`variables.tf`](variables.tf) or b
 
 | Variable | Description | Default |
 |----------|-------------|---------|
+| `azure_subscription_id` | **Required.** Azure subscription ID | *(none)* |
 | `location` | Azure region for resources | `UK South` |
 | `container_name` | Name of the storage container | `sftp-root` |
 | `sftp_local_user` | Username for SFTP access | `extpartner1` |
@@ -52,6 +53,7 @@ The following variables can be customized in [`variables.tf`](variables.tf) or b
 ### Example terraform.tfvars
 
 ```hcl
+azure_subscription_id = "00000000-0000-0000-0000-000000000000" # Replace with your Azure Subscription ID
 location = "East US"
 container_name = "my-sftp-container"
 sftp_local_user = "myuser"
@@ -74,12 +76,14 @@ terraform output -raw sftp_password
 
 ## Connecting to SFTP
 
+
 Use any SFTP client with the following connection details:
 
 - **Host**: `<storage_account_name>.blob.core.windows.net`
 - **Port**: 22 (default SFTP port)
 - **Username**: `<storage_account>.<container>.<local_user>`
-- **Password**: Retrieved from Terraform output
+- **Password**: Retrieved from Terraform output (password authentication is enabled by default)
+
 
 ### Example using command line:
 ```bash
@@ -99,10 +103,11 @@ The dev container includes:
 - Terraform (latest version)
 - Git with default branch set to `main`
 
-To use the dev container within VS Code: 
+To use the dev container within VS Code:
 1. Install [VS Code](https://code.visualstudio.com/) and the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
 2. Open the project in VS Code
 3. When prompted, reopen in container
+4. Be sure to set your `azure_subscription_id` variable in your `terraform.tfvars` or as an environment variable before running Terraform commands.
 
 ## Security Considerations
 
